@@ -1,0 +1,82 @@
+
+= io-tupelo-demo/datomic-pro-mbrainz
+
+This demo project contains sample code & test results for the Datmoic Mbrainz example.
+
+It assumes you have installed Datomic Pro on-prem (i.e. not Datomic Cloud)
+
+== Getting Started
+
+First, you need a copy of Datomic. Follow along
+link:https://docs.datomic.com/on-prem/getting-started/dev-setup.html[as described on the Datomic website]
+for "Local Dev Setup".
+
+Second, you must install the Mbrainz music data into Datomic 
+link:https://docs.datomic.com/on-prem/query/pull.html[as described here]. Don't forget to start the
+transactor.  Also, we assume you name your database as in the URI `datomic:dev://localhost:4334/mbrainz-1968-1973` 
+
+== Fix your version spec in `project.clj`
+
+We assume you have the on-prem version of Datomic Pro.  If so, edit the Lein coordinates
+in `project.clj` so match your version number (in the double quotes), e.g.
+
+    [com.datomic/datomic-pro "1.0.6269"]
+
+where the version number `1.0.6269` should match whatever is in the `VERSION` file at the root of your
+Datomic distribution.
+
+== Examine the code
+
+Basic queries are shown in this unit test file:
+
+    test/tst/tupelo_datomic/basic.clj
+
+Queries using the "pull" syntax are shown here:
+
+    test/tst/tupelo_datomic/pull.clj
+
+
+== Run the unit tests
+
+Easy as pie:
+
+    lein clean ; lein test
+
+You should see something like this:
+
+```
+> lct
+
+lein test tst._bootstrap
+
+-----------------------------------
+   Clojure 1.11.1    Java 17.0.2
+-----------------------------------
+
+lein test tst.tupelo-datomic.basic
+
+lein test tst.tupelo-datomic.pull
+
+Ran 3 tests containing 12 assertions.
+0 failures, 0 errors.
+
+```
+
+
+## Wanna do more?
+
+Checkout these two projects:
+
+- link:https://github.com/cloojure/tupelo[Tupelo Clojure] - Clojure with a Spoonful of Honey (a library of helper & convenience functions)
+- link:https://github.com/io-tupelo/clj-template[clj-template] - A template for starting new Clojure projects (just clone and go!)
+
+== Requirements
+ - Clojure 1.8 or above
+ - Java 1.8 or above
+
+== License
+
+Copyright © 2022  Alan Thompson
+
+Distributed under the link:https://www.eclipse.org/legal/epl-v10.html[Eclipse Public License], the same as Clojure.
+
